@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="photo" >
+        <item>原图</item>
+        <item>二值图</item>
+        <item>中值滤波</item>
+        <item>或运算后的图像</item>
+        <item>二值化图像取反</item>
+        <item>填充后的二进制图像</item>
+        <item>开值后的图像</item>
+    </string-array>
+</resources>
