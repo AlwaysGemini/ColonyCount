@@ -1,5 +1,6 @@
 package com.example.admin.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,15 +15,15 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        findViewById(R.id.bt_1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 //获取到用户输入的账号密码
-                EditText editText1 = findViewById(R.id.et_1);
-                EditText editText2 = findViewById(R.id.et_2);
-                String UserAccount = editText1.getText().toString();
-                String UserPassword = editText2.getText().toString();
+                EditText useraccount = findViewById(R.id.user_account);
+                EditText userpassword = findViewById(R.id.user_password);
+                String UserAccount = useraccount.getText().toString();
+                String UserPassword = userpassword.getText().toString();
                 //将用户账号密码存入User对象中
                 User user = new User(UserAccount,UserPassword);
 
@@ -34,6 +35,14 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(intent);
             }
         });
     }

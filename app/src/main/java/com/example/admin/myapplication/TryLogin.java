@@ -11,7 +11,7 @@ import AndroidServer.Message;
 public class TryLogin extends Thread {
     public String run(Object object) {
         try {
-                Socket socket = new Socket("10.0.2.2",18554);
+                Socket socket = new Socket("10.0.2.2",10001);
                 ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
                 objectOutputStream.writeObject(object);
                 ObjectInputStream objectInputStream = new ObjectInputStream(socket.getInputStream());

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
 
     <TextView
         android:id="@+id/title"
@@ -10,7 +13,7 @@
         android:textSize="50sp"
         android:textColor="#000000"
         android:gravity="center"
-        android:text="登录界面" />
+        android:text="账号注册" />
 
     <EditText
         android:id="@+id/user_account"
@@ -37,30 +40,11 @@
         android:paddingRight="25dp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/user_password"
         android:layout_marginTop="20dp"
-        android:text="登录"/>
+        android:text="注册"/>
 
-    <TextView
-        android:id="@+id/change_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:text="忘记密码？"
-        android:layout_alignParentLeft="true"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp" />
-
-    <TextView
-        android:id="@+id/register"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/login"
-        android:text="新用户注册"
-        android:layout_alignParentRight="true"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp" />
 </RelativeLayout>
