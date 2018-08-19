@@ -16,16 +16,16 @@ public class SampleAdapter extends ArrayAdapter<Sample> {
 
     private int resourceId;
 
-    public SampleAdapter(Context context, int textViewResourceId, List<Sample> objects){
-        super(context,textViewResourceId,objects);
-        resourceId=textViewResourceId;
+    public SampleAdapter(Context context, int textViewResourceId, List<Sample> objects) {
+        super(context, textViewResourceId, objects);
+        resourceId = textViewResourceId;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         Sample sample = getItem(position);
-        View view = LayoutInflater.from(getContext()).inflate(resourceId,parent,false);
+        View view = LayoutInflater.from(getContext()).inflate(resourceId, parent, false);
         ImageView sampleImage = view.findViewById(R.id.sample_imageId);
         TextView sampleserialNumber = view.findViewById(R.id.sample_serialNumber);
         TextView sampleCFU = view.findViewById(R.id.sample_CFU);

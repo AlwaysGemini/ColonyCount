@@ -1,8 +1,8 @@
 package com.example.admin.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -25,15 +25,15 @@ public class LoginActivity extends AppCompatActivity {
                 String UserAccount = useraccount.getText().toString();
                 String UserPassword = userpassword.getText().toString();
                 //将用户账号密码存入User对象中
-                User user = new User(UserAccount,UserPassword);
+                User user = new User(UserAccount, UserPassword);
 
                 //尝试登陆
                 TryLogin tryLogin = new TryLogin();
                 String isSuccessLogin = tryLogin.run(user);
-                if(isSuccessLogin.equals("Success")){
-                    Toast.makeText(getApplicationContext(),"登陆成功",Toast.LENGTH_LONG).show();
-                }else {
-                    Toast.makeText(getApplicationContext(),"登陆失败",Toast.LENGTH_LONG).show();
+                if (isSuccessLogin.equals("Success")) {
+                    Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "登陆失败", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -41,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
             }
         });

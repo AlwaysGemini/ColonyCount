@@ -6,11 +6,11 @@ public class Sample {
     private String CFU;
     private String date;
 
-    public Sample(int imageId,String serialNumber,String  CFU,String date){
-        this.imageId=imageId;
-        this.serialNumber=serialNumber;
-        this.CFU=CFU;
-        this.date=date;
+    public Sample(int imageId, String serialNumber, String CFU, String date) {
+        this.imageId = imageId;
+        this.serialNumber = serialNumber;
+        this.CFU = CFU;
+        this.date = date;
     }
 
     public int getImageId() {
