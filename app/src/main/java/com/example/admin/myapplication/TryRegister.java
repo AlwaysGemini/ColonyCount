@@ -11,7 +11,7 @@ public class TryRegister extends Thread {
 
     public String run(Object object) {
         try {
-            Socket socket = new Socket("10.0.0.2", 10001);
+            Socket socket = new Socket("10.0.2.2", 10001);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(socket.getOutputStream());
             Message request = new Message();
             request.setMessage("Register");

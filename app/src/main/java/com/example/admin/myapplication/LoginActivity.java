@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
                 String isSuccessLogin = tryLogin.run(user);
                 if (isSuccessLogin.equals("Success")) {
                     Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_LONG).show();
+                    LoginActivity.this.finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "登陆失败", Toast.LENGTH_LONG).show();
                 }

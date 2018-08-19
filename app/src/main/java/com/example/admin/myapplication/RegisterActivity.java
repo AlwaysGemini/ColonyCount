@@ -28,7 +28,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String isSuccessRegister = tryRegister.run(user);
                 if (isSuccessRegister.equals("Success")) {
                     Toast.makeText(getApplicationContext(), "注册成功", Toast.LENGTH_LONG).show();
-                    //RegisterActivity.this.finish();
+                    RegisterActivity.this.finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "注册失败", Toast.LENGTH_LONG).show();
                 }
