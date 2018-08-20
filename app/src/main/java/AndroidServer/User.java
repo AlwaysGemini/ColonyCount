@@ -1,5 +1,7 @@
 package AndroidServer;
 
+import java.util.Date;
+
 public class User implements java.io.Serializable{
     private String UserAccount;
     private String UserPassword;

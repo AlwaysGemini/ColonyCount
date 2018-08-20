@@ -17,7 +17,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -86,11 +88,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     int count = 1;
-
+    SimpleDateFormat format = new SimpleDateFormat("yyyy:MM:dd hh:mm:ss");
+    Date date = new Date();
     private void initSample() {
         for (int i = 0; i < 10; i++) {
 
-            Sample sample = new Sample(R.drawable.a1, "#" + count++, 132 + "个", "2018-07-" + (count + 13) + "," + (count + 10) + ":" + (16 + count) + ":" + (count + 25));
+            Sample sample = new Sample(R.drawable.a1, "#" + count++, 132 + "个",format.format(date));
             sampleList.add(sample);
         }
     }
