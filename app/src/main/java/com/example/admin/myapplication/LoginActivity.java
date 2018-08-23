@@ -29,16 +29,19 @@ public class LoginActivity extends AppCompatActivity {
 
                 //尝试登陆
                 TryLogin tryLogin = new TryLogin();
+                //运行登录线程，并等待接受服务器发来的结果
                 String isSuccessLogin = tryLogin.run(user);
+                //如果结果是Success则登录成功，返回主界面；否则失败，提示检查账号密码是否正确
                 if (isSuccessLogin.equals("Success")) {
                     Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_LONG).show();
                     LoginActivity.this.finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "登陆失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "登陆失败，请检查账号密码是否正确", Toast.LENGTH_LONG).show();
                 }
             }
         });
 
+        //为注册按钮设置点击事件，点击跳转到注册界面
         findViewById(R.id.register).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

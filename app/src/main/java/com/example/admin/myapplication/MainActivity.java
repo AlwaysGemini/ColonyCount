@@ -23,7 +23,7 @@ import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
 
     private List<Sample> sampleList = new ArrayList<>();
 
@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //初始化SampleList
         initSample();
         SampleAdapter adapter = new SampleAdapter(MainActivity.this, R.layout.sample, sampleList);
         ListView listView = findViewById(R.id.list_view);
@@ -58,36 +59,35 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        //为头像和头像下的两行文字设置点击事件，点击跳转到登录界面
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View drawview = navigationView.inflateHeaderView(R.layout.nav_header_main);
         ImageView head_iv = drawview.findViewById(R.id.imageView);
         TextView textView1 = drawview.findViewById(R.id.textView1);
         TextView textView2 = drawview.findViewById(R.id.textView2);
-        head_iv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        textView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+        head_iv.setOnClickListener(this);
+        textView1.setOnClickListener(this);
+        textView2.setOnClickListener(this);
+
         navigationView.setNavigationItemSelectedListener(this);
     }
 
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.imageView:
+            case R.id.textView1:
+            case R.id.textView2:
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                break;
+        }
+    }
+    //记录SampleList个数
     int count = 1;
+
+    //实时生成时间，生成格式为xxxx:xx:xx xx:xx:xx
     SimpleDateFormat format = new SimpleDateFormat("yyyy:MM:dd hh:mm:ss");
     Date date = new Date();
     private void initSample() {
@@ -147,4 +147,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }
