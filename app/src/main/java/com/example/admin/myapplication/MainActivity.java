@@ -3,7 +3,6 @@ package com.example.admin.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,9 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener{
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     private List<Sample> sampleList = new ArrayList<>();
 
@@ -44,14 +41,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, ImageSettingActivity.class);
-                startActivity(intent);
-            }
-        });
+        //为悬浮按钮设置点击事件
+        findViewById(R.id.fab).setOnClickListener(this);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -62,12 +53,10 @@ public class MainActivity extends AppCompatActivity
         //为头像和头像下的两行文字设置点击事件，点击跳转到登录界面
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         View drawview = navigationView.inflateHeaderView(R.layout.nav_header_main);
-        ImageView head_iv = drawview.findViewById(R.id.imageView);
-        TextView textView1 = drawview.findViewById(R.id.textView1);
-        TextView textView2 = drawview.findViewById(R.id.textView2);
-        head_iv.setOnClickListener(this);
-        textView1.setOnClickListener(this);
-        textView2.setOnClickListener(this);
+        drawview.findViewById(R.id.imageView).setOnClickListener(this);
+        drawview.findViewById(R.id.textView1).setOnClickListener(this);
+        drawview.findViewById(R.id.textView2).setOnClickListener(this);
+
 
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -75,25 +64,32 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.imageView:
             case R.id.textView1:
             case R.id.textView2:
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.fab:
+                intent = new Intent(MainActivity.this, ImageSettingActivity.class);
+                startActivity(intent);
+                break;
         }
     }
+
+
     //记录SampleList个数
     int count = 1;
 
     //实时生成时间，生成格式为xxxx:xx:xx xx:xx:xx
     SimpleDateFormat format = new SimpleDateFormat("yyyy:MM:dd hh:mm:ss");
     Date date = new Date();
+
     private void initSample() {
         for (int i = 0; i < 10; i++) {
 
-            Sample sample = new Sample(R.drawable.a1, "#" + count++, 132 + "个",format.format(date));
+            Sample sample = new Sample(R.drawable.a1, "#" + count++, 132 + "个", format.format(date));
             sampleList.add(sample);
         }
     }
