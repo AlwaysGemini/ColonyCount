@@ -29,7 +29,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".StartActivity" />
         <activity android:name=".ImageSettingActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".LogoActivity"></activity>
     </application>
 
 </manifest>

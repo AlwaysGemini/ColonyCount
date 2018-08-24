@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-public class ImageSettingActivity extends AppCompatActivity implements View.OnClickListener{
+public class ImageSettingActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +25,7 @@ public class ImageSettingActivity extends AppCompatActivity implements View.OnCl
         final AlertDialog.Builder alertDialog3 = new AlertDialog.Builder(this);
         final View view2 = View.inflate(this, R.layout.other_setting_layout, null);
         final View view3 = View.inflate(this, R.layout.other_setting_layout2, null);
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.button2:
                 alertDialog2.setTitle("参数设置").setIcon(R.mipmap.ic_launcher).setView(view2).create();
                 final AlertDialog show1 = alertDialog2.show();

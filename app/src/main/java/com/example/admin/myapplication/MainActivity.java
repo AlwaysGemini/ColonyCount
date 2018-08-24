@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.imageView:
             case R.id.textView1:
             case R.id.textView2:
-                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                Intent intent = new Intent(MainActivity.this, LogoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.fab:
