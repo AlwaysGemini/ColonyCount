@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content">
 
     <!-- 首先定义标题栏 -->
     <RelativeLayout
@@ -10,23 +9,24 @@
         android:layout_width="match_parent"
         android:layout_height="58dp"
         android:background="#ed4255">
+
         <TextView
-            android:text="标题栏"
             android:id="@+id/text_title"
-            android:textSize="21sp"
-            android:textColor="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
             android:gravity="center"
             android:singleLine="true"
-            android:ellipsize="marquee"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:text="标题栏"
+            android:textColor="#fff"
+            android:textSize="21sp" />
 
         <Button
             android:id="@+id/button_backward"
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:drawablePadding="6dp"
             android:background="#ed4255"
+            android:drawablePadding="6dp"
             android:ellipsize="end"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -41,8 +41,8 @@
             android:layout_width="70dp"
             android:layout_height="match_parent"
             android:layout_alignParentRight="true"
-            android:drawablePadding="6dp"
             android:background="#ed4255"
+            android:drawablePadding="6dp"
             android:ellipsize="end"
             android:gravity="center"
             android:paddingLeft="5dp"

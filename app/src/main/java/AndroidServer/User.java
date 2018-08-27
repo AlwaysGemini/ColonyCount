@@ -1,15 +1,14 @@
 package AndroidServer;
 
-import java.util.Date;
-
-public class User implements java.io.Serializable{
+public class User implements java.io.Serializable {
     private String UserAccount;
     private String UserPassword;
 
-    public User(String userAccount,String userPassword){
+    public User(String userAccount, String userPassword) {
         UserAccount = userAccount;
         UserPassword = userPassword;
     }
+
     public String getUserAccount() {
         return UserAccount;
     }

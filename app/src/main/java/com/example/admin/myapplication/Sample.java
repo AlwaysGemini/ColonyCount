@@ -1,10 +1,10 @@
 package com.example.admin.myapplication;
 
 public class Sample {
-    private int imageId;
-    private String serialNumber;
-    private String CFU;
-    private String date;
+    private int imageId;          //imageId：图片ID
+    private String serialNumber;  //serialNumber序号
+    private String CFU;           //CFU：菌落数
+    private String date;          //date：日期
 
     public Sample(int imageId, String serialNumber, String CFU, String date) {
         this.imageId = imageId;

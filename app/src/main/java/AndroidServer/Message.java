@@ -1,5 +1,6 @@
 package AndroidServer;
 
+
 public class Message implements java.io.Serializable {
     private String message;
 

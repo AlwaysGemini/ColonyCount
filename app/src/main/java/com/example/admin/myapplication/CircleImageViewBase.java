@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.NinePatchDrawable;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 /**
  * <br/>************************************************
@@ -37,12 +36,14 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
     private int mTextSize = 50;                                                         //文字大小 默认50
     private String mText = null;                                                        //显示文字内容
     private int mTextColor = Color.BLACK;                                               //文字颜色
+
     static {
         PorterDuff.Mode localMode = PorterDuff.Mode.DST_IN;
         MASK_XFERMODE = new PorterDuffXfermode(localMode);
     }
 
     protected abstract void initConfig();
+
     public CircleImageViewBase(Context paramContext) {
         super(paramContext);
         initConfig();
@@ -61,6 +62,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
     /**
      * 设置使用默认样式，即不进行图片圆形处理
      * <br/> 默认 false 不使用默认样式，如果不想进行图片园处理设置为 true 即可
+     *
      * @param useDefaultStyle boolean false : 图片圆形处理 ； true ：图片不进行圆形处理
      */
     public void setUseDefaultStyle(boolean useDefaultStyle) {
@@ -70,6 +72,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
     /**
      * 设置圆形图片边界宽
      * <br/> 默认 边界宽为 10 ，如果想无边界设置 0 即可
+     *
      * @param borderWidth
      */
     public void setBorderWidth(int borderWidth) {
@@ -79,6 +82,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
     /**
      * 设置圆形图片边颜色
      * <br/> 默认 边界颜色为 白色（#FFFFFF）
+     *
      * @param mBorderColor
      */
     public void setBorderColor(int mBorderColor) {
@@ -88,6 +92,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
     /**
      * 设置填充，当图片小于设置的圆时，会自动拉伸图片使图片填充满整个圆
      * <br/> true 填充 ， false 不进行填充
+     *
      * @param isFill boolean : true 填充 ， false 不进行填充
      */
     public void setIsFill(boolean isFill) {
@@ -139,21 +144,21 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
         int picWidth = getDrawable().getBounds().width();//获取图片实际的宽
         int picHeight = getDrawable().getBounds().height();//获取图片实际的高
 
-        if(!isFill && picWidth > picHeight){
-            boundsWidth = (int)((float) picWidth / (float)picHeight * (float)height);
+        if (!isFill && picWidth > picHeight) {
+            boundsWidth = (int) ((float) picWidth / (float) picHeight * (float) height);
             boundsHeight = height;
         }
 
-        if(!isFill && picWidth < picHeight){
+        if (!isFill && picWidth < picHeight) {
             boundsWidth = height;
-            boundsHeight = (int)((float) picHeight / (float)picWidth * (float)width);
+            boundsHeight = (int) ((float) picHeight / (float) picWidth * (float) width);
         }
 
-        int whSize = Math.min(width,height);
+        int whSize = Math.min(width, height);
         width = whSize;
         height = whSize;
 
-        if(isFill || picWidth == picHeight){
+        if (isFill || picWidth == picHeight) {
             boundsWidth = width;
             boundsHeight = height;
         }
@@ -172,10 +177,10 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
             this.mask = createOvalBitmap(width, height);
         }
 
-        if(mText != null){
+        if (mText != null) {
             /** 文字背景 */
             paramCanvas.save();
-            paramCanvas.clipRect(0, height * 2 / 3 , width, height);
+            paramCanvas.clipRect(0, height * 2 / 3, width, height);
             paramCanvas.drawColor(mTextBackgroundColor);
             paramCanvas.restore();
         }
@@ -186,7 +191,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
 
         /** 将画布复制到layer上 */
         paramCanvas.restoreToCount(layer);
-        drawBorder(mText , paramCanvas, width, height);
+        drawBorder(mText, paramCanvas, width, height);
         ViewGroup.LayoutParams params = getLayoutParams();
         params.width = width;
         params.height = height;
@@ -200,7 +205,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
      * @param width
      * @param height
      */
-    private void drawBorder(String textStr ,Canvas canvas, final int width, final int height) {
+    private void drawBorder(String textStr, Canvas canvas, final int width, final int height) {
         if (mBorderWidth == 0) {
             return;
         }
@@ -211,14 +216,14 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
         mBorderPaint.setStrokeWidth(mBorderWidth);
 
 
-        if(textStr != null){
+        if (textStr != null) {
             Paint textPaint = new Paint();
             textPaint.setColor(mTextColor);
             textPaint.setTextSize(mTextSize);
             textPaint.setTextAlign(Paint.Align.CENTER);
             Paint.FontMetrics metrics = textPaint.getFontMetrics(); //获取文字信息
             float textHeight = metrics.bottom - metrics.top;  //文字的高度
-            canvas.drawText(textStr, width / 2,width - (textHeight - 10), textPaint);
+            canvas.drawText(textStr, width / 2, width - (textHeight - 10), textPaint);
         }
 
         /**
@@ -250,7 +255,7 @@ public abstract class CircleImageViewBase extends android.support.v7.widget.AppC
          * 让其缩进padding px)
          */
 
-        localCanvas.drawCircle(width >> 1,height >> 1,width - 2 >> 1, localPaint);
+        localCanvas.drawCircle(width >> 1, height >> 1, width - 2 >> 1, localPaint);
 
         return localBitmap;
     }
